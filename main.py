@@ -1,42 +1,31 @@
 #IMPORTS
 import os
-#import json
-
 import random
 from datetime import timedelta, timezone, time, datetime
-#from time import  FutureTime
 import discord
-#from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option #, create_choice
 import asyncio
 import youtube_dl
 import urllib.parse, urllib.request, re
+from discord.ext import commands, tasks
+import logging
 
 #Custom imports
-from keep_alive import keep_alive
 import actjson
 import funciones_montse as f_m
 from tdform import timedeltaformatter
 from pathlib import Path
-#from typing import Optional
 
-
-#import gtts
-#import pydub
-#import speech_recognition
-from discord.ext import commands, tasks
-
-#from utils.time import FutureTime
-import logging
-
+#CONFIGURACION
 hora_antigua = datetime.now()
 start = hora_antigua
 canales_habilitados= {879396354525397053}
-#CONFIGURACION
+
+
 #client = discord.Client(intents=discord.Intents.all())
 Bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
-#Bot.add_cog(music_cog)
+
 voice_client='None'
 slash = SlashCommand(Bot, sync_commands=True) # Declares slash commands through the client.
 guild_ids = [320694020328390666, 708283729528750171] # Put your server ID in this array.
@@ -47,18 +36,6 @@ Generales ={
 FFMPEG_OPTIONS = {
     'options': '-vn'
 }
-#https://discord.gg/tk9E4b6p       Pruebas Paulson
-#https://discord.gg/55FFBBEb       Countspiracion
-
-#####CODIGO COPIADO PARA /grabar
-###############################
-
-
-#discord.opus.load_opus('libopus-0.x64.dll')
-# print(discord.opus.is_loaded())
-# print(Path.cwd() / 'waves')
-
-###########KEEP IT ALIVE BUT FOR REAL
 
 async def hora():
   #canal = Bot.get_channel(879396354525397053)
@@ -101,50 +78,12 @@ logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
-number_txt_file = Path.cwd() / 'number.txt'
-number_txt_file.touch(exist_ok=True)
-number = int(number_txt_file.open('r').read() or 0)
-waves_folder = (Path.cwd() / 'recordings')
-waves_file_format = "recording{}.wav"
-waves_folder.mkdir(parents=True, exist_ok=True)
-tts_folder = (Path.cwd() / 'tts')
-tts_folder.mkdir(parents=True, exist_ok=True)
-tts_file_format = "tts{}{}.mp3"
-sr_folder = (Path.cwd() / 'sr')
-sr_folder.mkdir(parents=True, exist_ok=True)
-sr_file_format = "sr{}{}.wav"
 
 async def ensure_voice(ctx):
     if not ctx.author.voice:
         # "Fist join a Voice Channel, you man!"
         await ctx.reply("Conéctate primero a un canal de voz.", delete_after=10)
         raise Exception
-
-#############################################MUSIC##########################################
-puntero_playlist = 1
-'''@slash.slash(
-  name = "stt",
-  guild_ids = guild_ids)
-async def _stt(ctx: commands.Context, time: FutureTime, me_only: bool = True):
-    global number
-    if not ctx.voice_client:
-        await ctx.author.voice.channel.connect()
-    sr_file = sr_folder / sr_file_format.format(ctx.author, number)
-    sr_file.touch()
-    fp = sr_file.open('rb')
-    if me_only:
-        ctx.voice_client.listen(discord.UserFilter(discord.WaveSink(str(sr_file)), ctx.author))
-    else:
-        ctx.voice_client.listen(discord.WaveSink(str(sr_file)))
-    await discord.utils.sleep_until(time.dt)
-    ctx.voice_client.stop_listening()
-    await ctx.send("Recognizing your voice, please wait!")
-    recognizer = speech_recognition.Recognizer()
-    with speech_recognition.AudioFile(fp) as source:
-        sr_audio_data = recognizer.record(source)
-    # print(recognizer.recognize_google(sr_audio_data, language='en-US'))
-    await ctx.send("I think this is right, maybe, \n Here's your Speech-To-Text \n > " + recognizer.recognize_google(sr_audio_data, language='en-US'))
-    number += 1'''
 
 @tasks.loop(seconds=4)
 async def save_number_loop():
@@ -157,13 +96,6 @@ async def save_number_loop():
             # print(item)
             item.unlink()
         number = 0
-
-########## GRABAR #########
-'''@slash.slash(
-  name = "grabar",
-  guild_ids=guild_ids)
-async def _grabar(ctx):
-  await ctx.reply("Comando en construcción.", delete_after = 5)'''
 
 ########## UNIR ##########
 @slash.slash(
@@ -596,12 +528,12 @@ async def _banco(message):
 
 '''
 @slash.slash(
-	name = "ruleta",
+  name = "ruleta",
   description = "Jugar a la ruleta rusa",
   guild_ids = guild_ids)
 async def _ruleta(ctx, apuesta = 0):
-	if apuesta<100:
-		respuesta = "La apuesta mínima es de 100 Lexos."
+  if apuesta<100:
+    respuesta = "La apuesta mínima es de 100 Lexos."
     await ctx.reply(respuesta
  '''  
 
@@ -635,7 +567,7 @@ async def _caraocruz(ctx, apuesta):
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
  
 @slash.slash(
-	name="rps",
+  name="rps",
   description = "Rock, paper and scissors",
   guild_ids=guild_ids)
 async def _rps(ctx, apuesta = 0):
@@ -674,7 +606,9 @@ def esunnumero(mensaje):
       loes = False
   return loes
 
+
 ##############QUEMAR#################
+
 @slash.slash(
   name = "quemar",
   guild_ids = guild_ids)
