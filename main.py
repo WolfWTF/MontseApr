@@ -120,64 +120,6 @@ async def ensure_voice(ctx):
         await ctx.reply("Conéctate primero a un canal de voz.", delete_after=10)
         raise Exception
 
-'''@slash.slash(
-  name= "grabar",
-  guild_ids = guild_ids)
-@commands.before_invoke(ensure_voice)
-async def grabar(ctx: commands.Context):
-    global number
-    if not ctx.voice_client:
-        await ctx.author.voice.channel.connect()
-    wave_file = waves_folder / waves_file_format.format(number)
-    wave_file.touch()
-    fp = wave_file.open('rb')
-    #now = datetime.now()
-    #dt = timedelta(seconds=5)
-    when = datetime.now(UTC) + timedelta(seconds=3)
-    print(when)
-    sink = discord.WaveSink(str(wave_file))
-    ctx.voice_client.listen(sink)
-    await discord.utils.sleep_until() #añadir hora futura
-    ctx.voice_client.stop_listening()
-    # print(discord.File(fp, filename='record.wav'))
-    await ctx.send("Recording being sent. Please wait!")
-    await ctx.send('Here\'s, your record file.', file=discord.File(fp, filename=str(wave_file.name)))
-    number += 1'''
-
-
-# @bot.event
-# async def on_command_error(ctx, error):
-#     if hasattr(error, 'original'):
-#         error = error.original
-#     if isinstance(error, NotImplementedError):
-#         await ctx.send(error)
-
-
-'''@bot.command()
-async def test_send_music_api(ctx: commands.Context, wav_file):
-    if not ctx.voice_client:
-        await ctx.author.voice.channel.connect()
-    if not ctx.voice_client.is_playing():
-        ctx.voice_client.play(discord.FFmpegPCMAudio('waves/{}'.format(wav_file)))
-'''
-
-'''@bot.command(aliases=['tts'])
-async def text_to_speech(ctx: commands.Context, lang: Optional[str] = None, *, message: str):
-    global number
-    if not ctx.voice_client:
-        await ctx.author.voice.channel.connect()
-    tts_file = tts_folder / tts_file_format.format(ctx.author, number)
-    gtts.gTTS(message, lang=lang).save(str(tts_file))
-    tts_file_wav = tts_file.with_suffix('.wav')
-    pydub.AudioSegment.from_mp3(tts_file).export(tts_file_wav, format='wav')
-
-    if not ctx.voice_client.is_playing():
-        ctx.voice_client.play(discord.FFmpegPCMAudio(str(tts_file_wav)))
-    number += 1'''
-
-###############################
-###############################
-
 #############################################MUSIC##########################################
 puntero_playlist = 1
 '''@slash.slash(
@@ -330,20 +272,6 @@ def play_next(ctx):
     print("Se terminó la playlist")
     return
 
-
-'''async def play_song(ctx, url):
-  if(not ctx.voice_client.is_playing()):
-    player = await YTDLSource.from_url(url, loop=Bot.loop, stream=True)
-    global puntero_playlist
-    puntero_playlist += 1
-    playlist = actjson.abrir_json('playlist.json')
-    new_url = playlist[str(puntero_playlist)]["titulo"]
-    print("Puntero {puntero}".format(puntero=puntero_playlist))
-    ctx.voice_client.play(player, after = lambda ctx,new_url: play_song(ctx,new_url))
-  else:
-    new_url = url
-  await play_song(ctx,new_url)'''
-
 ############### PLAYLIST ##############
 @slash.slash(
   name="playlist",
@@ -460,19 +388,6 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         filename = data['url'] if stream else ytdl.prepare_filename(data)
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
-'''    @classmethod
-    async def from_url(cls, url, *, loop=None, stream=False):#
-        loop = loop or asyncio.get_event_loop()
-        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=not stream))
-
-        if 'entries' in data:
-            # take first item from a playlist
-            data = data['entries'][0]
-
-        filename = data['url'] if stream else ytdl.prepare_filename(data)
-        return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)'''
-
-     
 
 ######################################################
 @Bot.event
@@ -517,8 +432,6 @@ votacion = {}
 
 @Bot.event
 async def on_message(message):
-  '''if message.author == Bot.user:
-    return'''
   msg = message.author.name + ": " + message.content
   print(msg)
   if ("montse" in message.content.lower()) or ("<@!878749645898149908>" in message.content.lower()) :
@@ -526,61 +439,7 @@ async def on_message(message):
     frasesmontse = fm.readlines()
     n_frases=len(frasesmontse)
     frasemontse = frasesmontse[random.randint(0,n_frases-1)]
-    await message.reply(str(frasemontse))  
-
-
-
-'''  
-  global votacion
-  if message.content.startswith("!votar"):
-    message2 = await message.reply("Este comando está en desarrollo.")
-    await message2.add_reaction("🕋")
-    await message2.add_reaction("❤️")
-    votacion = {
-        "opcion1":{
-          "emoji":"🕋",
-          "votos": 0},
-        "opcion2":{
-          "emoji":"❤️",
-          "votos": 0}}
-    votacion["msg"] = message2
-    
-  elif message.content.startswith("!cerrar"):
-    respuesta = "Resultados de las votaciones: \n"
-    respuesta += str(votacion["opcion1"]["votos"]) + " votos para " + votacion["opcion1"]["emoji"] + "\n"
-    respuesta += str(votacion["opcion2"]["votos"]) + " votos para " + votacion["opcion2"]["emoji"] + "\n"
-    print(respuesta)
-    await message.reply(respuesta)
-    
-@Bot.event
-async def on_reaction_add(reaction, user):
-  #channelid = 879396354525397053
-  #channel = Bot.get_channel(channelid)
-  global votacion
-  msg_id = reaction.message.id
-  usuario = user
-  if usuario == Bot.user:
-    return
-  try:
-    vot_id = votacion["msg"].id
-    if msg_id != vot_id:
-      return
-  except:
-    print("Reacción descartada.")
-
-  emoji = reaction.emoji
-  
-  if emoji == votacion["opcion1"]["emoji"]:
-    votacion["opcion1"]["votos"] +=1
-  elif emoji == votacion["opcion2"]["emoji"]:
-    votacion["opcion2"]["votos"] +=1
-  else:
-    await reaction.remove(usuario)
-    await reaction.message.reply('{}, reacciona con las opciones disponibles.'.format(usuario), delete_after = 5)'''
-
-
-
-
+    await message.reply(str(frasemontse))
 
 #################-1COMANDOS-#################
 @slash.slash(
@@ -774,8 +633,7 @@ async def _caraocruz(ctx, apuesta):
     await ctx.reply(f_m.caraocruz(ctx,int(apuesta),selec_usuario))
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
-
-    
+ 
 @slash.slash(
 	name="rps",
   description = "Rock, paper and scissors",
@@ -856,9 +714,6 @@ async def _quemar(ctx, combustible):
     respuesta = "Error en la funcion quemar."
   await ctx.reply(respuesta)
 
-
-
-
 ################# COMANDOS CON ROLES ##################
 #################-16BORRAR-################# 
 
@@ -885,7 +740,6 @@ def check_canal(ctx):
   permiso = canal_id in canales_habilitados
   return permiso
 
-
 #Futuras MODIFICACIONES.
 #cambiar /diaria a /semanal y cantidad fija (con racha) y baja.
 #implementar /burn /ruleta 
@@ -899,11 +753,6 @@ def check_canal(ctx):
   #programador
   #mandar tema
   #verificador
-
 #aprender a usar Cogs (conjuntos de comandos)
 
-#NO TOCAR. Estas instrucciones mantienen al bot online. 
-#comandos = get_all_commands()
-keep_alive() #24/7
-#Bot.add_cog(music_cog(Bot))
-Bot.run('ODc4NzQ5NjQ1ODk4MTQ5OTA4.YSFtYQ.LNhZad_-tFbhgPG3tHb5d315-1M') #token
+Bot.run('insertar aqui tu token') #token
