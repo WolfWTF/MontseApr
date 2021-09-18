@@ -687,5 +687,5 @@ def check_canal(ctx):
   #mandar tema
   #verificador
 #aprender a usar Cogs (conjuntos de comandos)
-
-Bot.run('insertar aqui tu token') #token
+token = actjson.abrir_json('token_montse.json')
+Bot.run(token) #token
