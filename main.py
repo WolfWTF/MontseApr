@@ -37,8 +37,8 @@ FFMPEG_OPTIONS = {
     'options': '-vn'
 }
 
-async def hora():
-  #canal = Bot.get_channel(879396354525397053)
+#si nada se rompe, borrar
+'''async def hora():
   while True:
       quehora = quehoraes()
       global hora_antigua
@@ -52,7 +52,7 @@ async def hora():
 
 def quehoraes():
   hora = datetime.now()
-  return hora
+  return hora'''
 
 @slash.slash(name = "uptime",
   guild_ids=guild_ids)
@@ -327,7 +327,6 @@ async def on_ready():
   print('Sesión iniciada como {0.user}'.format(Bot))
   channel = Bot.get_channel(879396354525397053) #Parche
   await channel.send("¡Me he quedao' traspuesta un ratito, pero ya estoy de vuelta!")
-  Bot.loop.create_task(hora())
 
 #BIENVENIDA
 @Bot.event
