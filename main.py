@@ -187,7 +187,7 @@ async def _play(ctx, url=""):
       actjson.actualizar_playlist(playlist)
       play_next(ctx)
       ###########################
-
+puntero_playlist = 0
 def play_next(ctx):
   playlist = actjson.abrir_json('playlist.json')
   global puntero_playlist
@@ -363,8 +363,8 @@ votacion = {}
 
 @Bot.event
 async def on_message(message):
-  msg = message.author.name + ": " + message.content
-  print(msg)
+  #msg = message.author.name + ": " + message.content
+  #print(msg)
   if ("montse" in message.content.lower()) or ("<@!878749645898149908>" in message.content.lower()) :
     fm = open("frasesmontseras.txt", "r")
     frasesmontse = fm.readlines()
