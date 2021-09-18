@@ -1,0 +1,39 @@
+{
+    "cerveza" : {
+      "precio": 20,
+      "nombre": ":beer: Cerveza                             ",
+      "consumible" : "si",
+      "frase_consumir" : "¡Qué bien sienta una cervecita bien fría!"
+    },
+    "banana" : {
+      "precio": 10,
+      "nombre": ":banana: Banana                               ",
+      "consumible" : "si",
+      "frase_consumir" : "+1 en potasio."
+    },
+    "coco" : {
+      "precio": 100,
+      "nombre": ":coconut: Coco                                ",
+      "consumible" : "no"
+    },
+    "sombrero de pensar" :{
+      "precio": 500,
+      "nombre": ":cowboy: Sombrero de Pensar    ",
+      "consumible" : "no"
+    },
+    "corona falsa" :{
+      "precio": 4500,
+      "nombre": ":crown: Corona Falsa    ",
+      "consumible" : "no"
+    },
+    "llavecita de juguete":{
+      "precio": 3000,
+      "nombre": ":wrench: Llavecita de Juguete    ",
+      "consumible": "no"
+    },
+    "boleto para la lista":{
+      "precio" : 3000,
+      "nombre" : ":tickets: Boleto para la lista     ",
+      "consumible": "no"
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "DaniCassani": {
+        "lexos": 2510,
+        "diaria_racha": 19,
+        "next_diaria": "2021-09-19",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 208,
+            "start": "2021-09-18T15:41:03.620749+02:00"
+        }
+    },
+    "ivan sabata": {
+        "lexos": 1811,
+        "diaria_racha": 10,
+        "next_diaria": "2021-09-14",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 189,
+            "start": "2021-09-04T10:11:24.886046+02:00"
+        }
+    },
+    "Alexander Alex": {
+        "lexos": 2942,
+        "diaria_racha": 3,
+        "next_diaria": "2021-08-29",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 245,
+            "start": "2021-09-12T23:54:21.143020+02:00"
+        }
+    },
+    "Abner Mart\u00ednez": {
+        "lexos": 3224,
+        "diaria_racha": 6,
+        "next_diaria": "2021-09-05",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 275,
+            "start": "2021-09-05T00:40:46.096523+02:00"
+        }
+    },
+    "Combo": {
+        "lexos": 0,
+        "diaria_racha": 14,
+        "next_diaria": "2021-09-19",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 232,
+            "start": "2021-09-18T17:24:49.416378+02:00"
+        }
+    },
+    "ytrio": {
+        "lexos": 1883,
+        "diaria_racha": 14,
+        "next_diaria": "2021-09-19",
+        "trabajando": {
+            "status": "no",
+            "sueldo": 242,
+            "start": "2021-09-16T20:17:25.834078+02:00"
+        }
+    },
+    "Igor Cerain": {
+        "lexos": 0,
+        "diaria_racha": 0,
+        "next_diaria": "2021-08-28"
+    },
+    "Montse Apr": {
+        "lexos": 1,
+        "diaria_racha": 0,
+        "next_diaria": "2021-09-11"
+    },
+    "Lucho D": {
+        "lexos": 544,
+        "diaria_racha": 4,
+        "next_diaria": "2021-09-17",
+        "trabajando": {
+            "status": "si",
+            "sueldo": 195,
+            "start": "2021-09-18T15:41:38.487367+02:00"
+        }
+    }
+}
