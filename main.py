@@ -187,7 +187,7 @@ async def _play(ctx, url=""):
       actjson.actualizar_playlist(playlist)
       play_next(ctx)
       ###########################
-puntero_playlist = 0
+puntero_playlist = 1
 def play_next(ctx):
   playlist = actjson.abrir_json('playlist.json')
   global puntero_playlist
