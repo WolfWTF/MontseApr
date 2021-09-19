@@ -164,7 +164,7 @@ async def _play(ctx, url=""):
     player = YTDLSource.from_url(url, loop=Bot.loop, stream=True) #await quitao
     #####apuntar en playlist
     titulo = player.title
-    playlist = actjson.abrir_json('playlist.json') 
+    playlist = actjson.abrir_json('MontseApr/playlist.json') 
     longitud = len(playlist)
     tema = {'titulo': titulo, 'url': url}
     playlist[longitud+1] = tema
@@ -180,7 +180,7 @@ async def _play(ctx, url=""):
       
       player = YTDLSource.from_url(url, loop=Bot.loop, stream=True)
       titulo = player.title
-      playlist = actjson.abrir_json('playlist.json') 
+      playlist = actjson.abrir_json('MontseApr/playlist.json') 
       longitud = len(playlist)
       tema = {'titulo': titulo, 'url': url}
       playlist[longitud+1] = tema
@@ -189,7 +189,7 @@ async def _play(ctx, url=""):
       ###########################
 puntero_playlist = 1
 def play_next(ctx):
-  playlist = actjson.abrir_json('playlist.json')
+  playlist = actjson.abrir_json('MontseApr/playlist.json')
   global puntero_playlist
   puntero = "Puntero: " + str(puntero_playlist)
   print(puntero)
@@ -208,7 +208,7 @@ def play_next(ctx):
   name="playlist",
   guild_ids=guild_ids)
 async def _playlist(ctx):
-  playlist = actjson.abrir_json('playlist.json')
+  playlist = actjson.abrir_json('MontseApr/playlist.json')
   longitud = len(playlist)
   respuesta = "Playlist: " + str(longitud) + " temas. \n"
   i = 1
@@ -272,7 +272,7 @@ async def _prev(ctx):
 async def _sonando(ctx):
   respuesta = "Sonando: \n"
   global puntero_playlist
-  playlist = actjson.abrir_json('playlist.json')
+  playlist = actjson.abrir_json('MontseApr/playlist.json')
   url = playlist[str(puntero_playlist-1)]['url']
   respuesta += url
   await ctx.reply(respuesta, delete_after=5)
@@ -389,7 +389,7 @@ async def _comandos(message):
   await message.reply(embed=respuesta)
 
 def get_comandos():
-    comandos = actjson.abrir_json('comandos.json')
+    comandos = actjson.abrir_json('MontseApr/comandos.json')
 
     str_ocio = comandos["ocio"]
     str_ocio = str_ocio.replace(",","`\n`/")
@@ -617,7 +617,7 @@ async def _quemar(ctx, combustible):
   usuario = ctx.author.name
   es_un_numero = esunnumero(combustible)
   if not es_un_numero and tipo == string:
-    inventario = actjson.abrir_json('inventario.json')
+    inventario = actjson.abrir_json('MontseApr/inventario.json')
     
     if combustible in inventario[usuario]:
       cantidad = inventario[usuario][combustible]
@@ -633,7 +633,7 @@ async def _quemar(ctx, combustible):
      
   elif es_un_numero:
     combustible = int(combustible)
-    lexos = actjson.abrir_json('lexos.json')
+    lexos = actjson.abrir_json('MontseApr/lexos.json')
     dinero_usuario = lexos[usuario]['lexos']
     if dinero_usuario >= combustible:
       dinero_usuario -= combustible
@@ -686,5 +686,5 @@ def check_canal(ctx):
   #mandar tema
   #verificador
 #aprender a usar Cogs (conjuntos de comandos)
-token = actjson.abrir_json('token_montse.json')
+token = actjson.abrir_json('MontseApr/token_montse.json')
 Bot.run(token['montse_token']) #token
