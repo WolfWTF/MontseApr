@@ -193,7 +193,7 @@ def play_next(ctx):
   global puntero_playlist
   puntero = "Puntero: " + str(puntero_playlist)
   print(puntero)
-  if len(playlist) > puntero_playlist:
+  if len(playlist) >= puntero_playlist:
     #get the first url
     m_url = playlist[str(puntero_playlist)]['url']
     player = YTDLSource.from_url(m_url, loop=Bot.loop, stream=True)
