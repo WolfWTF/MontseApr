@@ -191,7 +191,7 @@ puntero_playlist = 1
 def play_next(ctx):
   playlist = actjson.abrir_json('playlist.json')
   global puntero_playlist
-  puntero = "Puntero: " + puntero_playlist
+  puntero = "Puntero: " + str(puntero_playlist)
   print(puntero)
   if len(playlist) > puntero_playlist:
     #get the first url
