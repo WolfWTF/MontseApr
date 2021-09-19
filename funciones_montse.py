@@ -10,7 +10,7 @@ import discord
 #from discord_slash.utils.manage_commands import create_option #, create_choice
 
 def diaria(message):
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   #Recogemos la información del usuario y del día
   usuario = message.author.name
   fecha = datetime.now(UTC).date().isoformat()
@@ -57,7 +57,7 @@ def diaria(message):
 
 def currar(message):
   usuario = message.author.name
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   if ("trabajando" in lexos[usuario]):
     trabajando = lexos[usuario]["trabajando"]["status"]
     if(trabajando == "no"):
@@ -82,7 +82,7 @@ def currar(message):
 
 def cobrar(message):
   usuario = message.author.name
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   hora = datetime.now(UTC)
   start = lexos[usuario]["trabajando"]["start"]
   start_time = datetime.fromisoformat(start) 
@@ -107,7 +107,7 @@ def cobrar(message):
   return respuesta
 
 def dar(message, destinatario: str, cantidad: int):  
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = message.author.name
   dinero_usuario = lexos[usuario]["lexos"]
   destino = destinatario.name
@@ -134,7 +134,7 @@ def dar(message, destinatario: str, cantidad: int):
 
 
 def tienda(message):
-  tienda = actjson.abrir_json("tienda.json")
+  tienda = actjson.abrir_json("MontseApr/tienda.json")
   lista = ""
   precios = ""
   for objeto in tienda:
@@ -149,9 +149,9 @@ def tienda(message):
 
 def comprar(message, objeto):
   objeto_low = objeto.lower()
-  tienda = actjson.abrir_json("tienda.json")
-  lexos = actjson.abrir_json("lexos.json")
-  inventarios = actjson.abrir_json("inventario.json")
+  tienda = actjson.abrir_json("MontseApr/tienda.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
+  inventarios = actjson.abrir_json("MontseApr/inventario.json")
   usuario=message.author.name
   if (objeto_low in tienda):
     precio = tienda[objeto_low]["precio"]
@@ -183,7 +183,7 @@ def comprar(message, objeto):
 
 def inventario(message):
   usuario = message.author.name
-  inventarios = actjson.abrir_json("inventario.json")
+  inventarios = actjson.abrir_json("MontseApr/inventario.json")
   if (usuario in inventarios):
     inventario_usuario = inventarios[usuario]
     lista =""
@@ -202,7 +202,7 @@ def inventario(message):
 
 
 def frase(message):
-  f = open("frasesblisseras.txt", "r")
+  f = open("MontseApr/frasesblisseras.txt", "r")
   frases = f.readlines()
   n_frases=len(frases)
   frase = frases[random.randint(0,n_frases-1)] +"*-Tony Domenech*"
@@ -212,8 +212,8 @@ def frase(message):
 
 def usar(message, objeto):  
   usuario = message.author.name
-  inventarios = actjson.abrir_json("inventario.json")
-  tienda = actjson.abrir_json("tienda.json")
+  inventarios = actjson.abrir_json("MontseApr/inventario.json")
+  tienda = actjson.abrir_json("MontseApr/tienda.json")
   if objeto in inventarios[usuario]:
     if tienda[objeto]["consumible"] == "si":
       cantidad = inventarios[usuario][objeto]
@@ -235,7 +235,7 @@ def usar(message, objeto):
 
 def banco(message):  
   usuario = message.author.name
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   if (usuario in lexos):
     dinero_actual = lexos[usuario]["lexos"]
     respuesta = "Tienes " + str(dinero_actual) + " lexos :coin:."
@@ -246,7 +246,7 @@ def banco(message):
 
 def rps(ctx, apuesta, selec_usuario,selec_maquina):
   respuesta = "Seleccion del usuario: " + selec_usuario + "\nSeleeción de la máquina: " + selec_maquina
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
   if (dinero_usuario >= apuesta and apuesta>0) :
@@ -282,7 +282,7 @@ def rps(ctx, apuesta, selec_usuario,selec_maquina):
   return respuesta
 
 def dados(ctx,apuesta):
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
   if (dinero_usuario >= apuesta  and apuesta>0):
@@ -307,7 +307,7 @@ def dados(ctx,apuesta):
   return respuesta
     
 def caraocruz(ctx,apuesta,selec_usuario):
-  lexos = actjson.abrir_json("lexos.json")
+  lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
   if (dinero_usuario >= apuesta  and apuesta>0):
