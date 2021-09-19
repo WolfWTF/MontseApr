@@ -191,12 +191,11 @@ puntero_playlist = 1
 def play_next(ctx):
   playlist = actjson.abrir_json('playlist.json')
   global puntero_playlist
-  print("Puntero:")
-  print(puntero_playlist)
-  if (len(playlist)+1) > puntero_playlist:
+  puntero = "Puntero: " + puntero_playlist
+  print(puntero)
+  if len(playlist) > puntero_playlist:
     #get the first url
     m_url = playlist[str(puntero_playlist)]['url']
-    print(m_url)
     player = YTDLSource.from_url(m_url, loop=Bot.loop, stream=True)
     ctx.voice_client.play(player, after=lambda e: play_next(ctx))
     puntero_playlist += 1
