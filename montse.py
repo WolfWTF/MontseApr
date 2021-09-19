@@ -365,7 +365,7 @@ async def on_message(message):
   #msg = message.author.name + ": " + message.content
   #print(msg)
   if ("montse" in message.content.lower()) or ("<@!878749645898149908>" in message.content.lower()) :
-    fm = open("frasesmontseras.txt", "r")
+    fm = open("MontseApr/frasesmontseras.txt", "r")
     frasesmontse = fm.readlines()
     n_frases=len(frasesmontse)
     frasemontse = frasesmontse[random.randint(0,n_frases-1)]
