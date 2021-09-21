@@ -1,12 +1,12 @@
 {
     "DaniCassani": {
-        "lexos": 2510,
-        "diaria_racha": 19,
-        "next_diaria": "2021-09-19",
+        "lexos": 607,
+        "diaria_racha": 21,
+        "next_diaria": "2021-09-21",
         "trabajando": {
             "status": "si",
-            "sueldo": 208,
-            "start": "2021-09-18T15:41:03.620749+02:00"
+            "sueldo": 203,
+            "start": "2021-09-21T19:25:12.093069+02:00"
         }
     },
     "ivan sabata": {
@@ -40,29 +40,29 @@
         }
     },
     "Combo": {
-        "lexos": 0,
-        "diaria_racha": 14,
-        "next_diaria": "2021-09-19",
+        "lexos": 6373,
+        "diaria_racha": 17,
+        "next_diaria": "2021-09-22",
         "trabajando": {
             "status": "si",
-            "sueldo": 232,
-            "start": "2021-09-18T17:24:49.416378+02:00"
+            "sueldo": 196,
+            "start": "2021-09-21T19:34:22.127609+02:00"
         }
     },
     "ytrio": {
-        "lexos": 1883,
-        "diaria_racha": 14,
-        "next_diaria": "2021-09-19",
+        "lexos": 3550,
+        "diaria_racha": 16,
+        "next_diaria": "2021-09-22",
         "trabajando": {
             "status": "no",
-            "sueldo": 242,
-            "start": "2021-09-16T20:17:25.834078+02:00"
+            "sueldo": 280,
+            "start": "2021-09-20T06:10:00.752495+02:00"
         }
     },
     "Igor Cerain": {
         "lexos": 0,
-        "diaria_racha": 0,
-        "next_diaria": "2021-08-28"
+        "diaria_racha": 3,
+        "next_diaria": "2021-09-22"
     },
     "Montse Apr": {
         "lexos": 1,
@@ -70,13 +70,13 @@
         "next_diaria": "2021-09-11"
     },
     "Lucho D": {
-        "lexos": 544,
-        "diaria_racha": 4,
-        "next_diaria": "2021-09-17",
+        "lexos": 0,
+        "diaria_racha": 7,
+        "next_diaria": "2021-09-22",
         "trabajando": {
             "status": "si",
-            "sueldo": 195,
-            "start": "2021-09-18T15:41:38.487367+02:00"
+            "sueldo": 218,
+            "start": "2021-09-21T19:54:23.015947+02:00"
         }
     }
 }
