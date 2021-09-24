@@ -410,7 +410,7 @@ def get_comandos():
     return string_completa
 
 
-#########EL REY REINANDO A DECRETAZO LIMPIO
+#########EL REY REINANDO A DECRETAZO LIMPIO###################################################################################################3##################
 
 @slash.slash(
   name="impuestos",
@@ -437,8 +437,10 @@ async def _impuestos(ctx):
         lexos["Alexander Alex"]["lexos"] = arcas_reales
         respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
-      respuesta ="**IMPUESTOS A LAS GRANDES FORTUNAS:**\n" + respuesta + "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
-      await ctx.reply(respuesta)
+      respuesta_embed = discord.Embed(title="__**IMPUESTOS A LAS GRANDES FORTUNAS:**__" , color= 0xff0000)
+      respuesta ="\n" + respuesta + "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
+      respuesta_embed.add_field(name="Gravámenes",value = respuesta)
+      await ctx.reply(embed = respuesta)
     #actjson.actualizar_lexos(lexos)
 
 
