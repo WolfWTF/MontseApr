@@ -430,14 +430,14 @@ async def _impuestos(ctx):
     for usuario in lexos:
       dinero = lexos[usuario]['lexos']
       if int(dinero) >= 10000 and usuario != "Alexander Alex":
-        impuesto = dinero*0.85
+        impuesto = round(dinero*0.85)
         dinero = dinero - impuesto
         arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
         lexos[usuario]['lexos'] = dinero
         lexos["Alexander Alex"]["lexos"] = arcas_reales
-        respuesta += "{} ha recibido un gravamen del 85% ({} lexos).\n".format(usuario,impuesto)
+        respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
-      respuesta += "Su Majestad gestionará con sabiduría este dinero público. :crown: :blush:"
+      respuesta += "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
       await ctx.reply(respuesta)
     #actjson.actualizar_lexos(lexos)
 
