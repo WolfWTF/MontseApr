@@ -437,7 +437,7 @@ async def _impuestos(ctx):
         lexos["Alexander Alex"]["lexos"] = arcas_reales
         respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
-      respuesta_embed = discord.Embed(title="__**IMPUESTOS A LAS GRANDES FORTUNAS:**__" , color= 0xff0000, description = respuesta)
+      respuesta_embed = discord.Embed(title="__**IMPUESTOS DEL REINO A LAS GRANDES FORTUNAS:**__" , color= 0xff0000, description = respuesta)
       #respuesta_embed.add_field(name="",)
       footer = "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. 👑😊"
       respuesta_embed.set_footer(text = footer)
