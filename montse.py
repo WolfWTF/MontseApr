@@ -419,7 +419,7 @@ def get_comandos():
 )
 async def _impuestos(ctx):
   roles = f_m.get_roles(ctx)  
-  roles_privilegiados = set(["👑 SU MAJESTAD 👑"])
+  roles_privilegiados = set(["👑 SU MAJESTAD 👑","Prime Minister"])
   rp_usuario = roles_privilegiados.intersection(roles)
   if len(rp_usuario) == 0:
     respuesta = "No tienes el rol necesario para ejecutar esta acción."
@@ -439,7 +439,7 @@ async def _impuestos(ctx):
     if len(respuesta)>0:
       respuesta += "Su Majestad gestionará con sabiduría este dinero público. :crown: :blush:"
       await ctx.reply(respuesta)
-    actjson.actualizar_lexos(lexos)
+    #actjson.actualizar_lexos(lexos)
 
 
 
