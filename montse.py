@@ -442,7 +442,7 @@ async def _impuestos(ctx):
       footer = "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. 👑😊"
       respuesta_embed.set_footer(text = footer)
       await ctx.reply(embed = respuesta_embed)
-    #actjson.actualizar_lexos(lexos)
+    actjson.actualizar_lexos(lexos)
 
 
 
