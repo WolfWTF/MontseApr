@@ -438,8 +438,9 @@ async def _impuestos(ctx):
         respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
       respuesta_embed = discord.Embed(title="__**IMPUESTOS A LAS GRANDES FORTUNAS:**__" , color= 0xff0000)
-      respuesta += "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
       respuesta_embed.add_field(name="Gravámenes",value = respuesta)
+      footer = "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. 👑😊"
+      respuesta_embed.set_footer(text = footer)
       await ctx.reply(embed = respuesta_embed)
     #actjson.actualizar_lexos(lexos)
 
