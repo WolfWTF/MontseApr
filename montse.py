@@ -423,6 +423,7 @@ async def _impuestos(ctx):
   rp_usuario = roles_privilegiados.intersection(roles)
   if len(rp_usuario) == 0:
     respuesta = "No tienes el rol necesario para ejecutar esta acción."
+    await ctx.reply(respuesta) 
   else:
     lexos = actjson.abrir_json("MontseApr/lexos.json")
     respuesta = ""
