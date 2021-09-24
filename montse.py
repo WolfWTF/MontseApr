@@ -301,6 +301,8 @@ ffmpeg_options = {
 
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
+
+
 ###clase del descargador
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
@@ -407,7 +409,40 @@ def get_comandos():
 
     return string_completa
 
-    
+
+#########EL REY REINANDO A DECRETAZO LIMPIO
+
+@slash.slash(
+  name="impuestos",
+  description="Impuestos del reino a las grandes fortunas.",
+  guild_ids=guild_ids
+)
+async def _impuestos(ctx):
+  roles = f_m.get_roles(ctx)  
+  roles_privilegiados = set(["👑 SU MAJESTAD 👑"])
+  rp_usuario = roles_privilegiados.intersection(roles)
+  if len(rp_usuario) == 0:
+    respuesta = "No tienes el rol necesario para ejecutar esta acción."
+  else:
+    lexos = actjson.abrir_json("MontseApr/lexos.json")
+    respuesta = ""
+    for usuario in lexos:
+      dinero = lexos[usuario]['lexos']
+      if int(dinero) >= 10000 and usuario != "Alexander Alex":
+        impuesto = dinero*0.85
+        dinero = dinero - impuesto
+        arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
+        lexos[usuario]['lexos'] = dinero
+        lexos["Alexander Alex"]["lexos"] = arcas_reales
+        respuesta += "{} ha recibido un gravamen del 85% ({} lexos).\n".format(usuario,impuesto)
+    if len(respuesta)>0:
+      respuesta += "Su Majestad gestionará con sabiduría este dinero público. :crown: :blush:"
+      await ctx.reply(respuesta)
+    actjson.actualizar_lexos(lexos)
+
+
+
+
 #################-2HOLA-#################
 @slash.slash(
   name="hola",
