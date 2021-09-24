@@ -437,7 +437,7 @@ async def _impuestos(ctx):
         lexos["Alexander Alex"]["lexos"] = arcas_reales
         respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
-      respuesta ="*IMPUESTOS A LAS GRANDES FORTUNAS:\n" + respuesta + "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
+      respuesta ="**IMPUESTOS A LAS GRANDES FORTUNAS:**\n" + respuesta + "👑 SU MAJESTAD 👑 lo gestionará con sabiduría. :crown: :blush:"
       await ctx.reply(respuesta)
     #actjson.actualizar_lexos(lexos)
 
