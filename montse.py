@@ -717,26 +717,32 @@ def check_canal(ctx):
   description = "Se sortea la lista de temas entre los poseedores de boletos.",
   guild_ids=guild_ids)
 async def _sorteo(ctx):
-  inventario = actjson.abrir_json('MontseApr/inventario.json')
-  n_reg = len(inventario)
-  print(n_reg)
-  papeletas = []
+  roles = f_m.get_roles(ctx)
+  roles_privilegiados = set(["Prime Minister","👑 SU MAJESTAD 👑"])
+  rp_usuario = roles_privilegiados.intersection(roles)
+  if len(rp_usuario) == 0:
+    respuesta = "No tienes el rol necesario para ejecutar esta acción."
+  else:
+    inventario = actjson.abrir_json('MontseApr/inventario.json')
+    n_reg = len(inventario)
+    print(n_reg)
+    papeletas = []
 
-  for key, value in inventario.items() :
-      print (key, value)
-      esta = "boleto para la lista" in value
-      if esta:
-        boletos = value["boleto para la lista"]
-        inventario[key].pop(["boleto para la lista"])
-        for i in range(boletos):
-          papeletas.append(key)
-  print(papeletas)
-  await ctx.reply("Rulando el bombo...")
-  await asyncio.sleep(3)
-  await ctx.send("Y el ganador es...")
-  await asyncio.sleep(3)
-  ganador = random.choice(papeletas)
-  await ctx.send(":tickets::tada: **{}!!** :tada::tickets:".format(ganador))
+    for key, value in inventario.items() :
+        print (key, value)
+        esta = "boleto para la lista" in value
+        if esta:
+          boletos = value["boleto para la lista"]
+          inventario[key].pop(["boleto para la lista"])
+          for i in range(boletos):
+            papeletas.append(key)
+    print(papeletas)
+    await ctx.reply("Rulando el bombo...")
+    await asyncio.sleep(3)
+    await ctx.send("Y el ganador es...")
+    await asyncio.sleep(3)
+    ganador = random.choice(papeletas)
+    await ctx.send(":tickets::tada: **{}!!** :tada::tickets:".format(ganador))
 
 
   
