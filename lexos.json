@@ -1,16 +1,16 @@
 {
     "DaniCassani": {
-        "lexos": 607,
-        "diaria_racha": 21,
-        "next_diaria": "2021-09-21",
+        "lexos": 491,
+        "diaria_racha": 32,
+        "next_diaria": "2021-10-03",
         "trabajando": {
             "status": "si",
-            "sueldo": 203,
-            "start": "2021-09-21T19:25:12.093069+02:00"
+            "sueldo": 299,
+            "start": "2021-10-02T19:34:44.244898+02:00"
         }
     },
     "ivan sabata": {
-        "lexos": 1811,
+        "lexos": 3520,
         "diaria_racha": 10,
         "next_diaria": "2021-09-14",
         "trabajando": {
@@ -20,7 +20,7 @@
         }
     },
     "Alexander Alex": {
-        "lexos": 2942,
+        "lexos": 32006,
         "diaria_racha": 3,
         "next_diaria": "2021-08-29",
         "trabajando": {
@@ -40,43 +40,43 @@
         }
     },
     "Combo": {
-        "lexos": 6373,
-        "diaria_racha": 17,
-        "next_diaria": "2021-09-22",
+        "lexos": 0,
+        "diaria_racha": 27,
+        "next_diaria": "2021-10-03",
         "trabajando": {
             "status": "si",
-            "sueldo": 196,
-            "start": "2021-09-21T19:34:22.127609+02:00"
+            "sueldo": 219,
+            "start": "2021-10-02T17:26:04.314378+02:00"
         }
     },
     "ytrio": {
-        "lexos": 3550,
-        "diaria_racha": 16,
-        "next_diaria": "2021-09-22",
+        "lexos": 2746,
+        "diaria_racha": 23,
+        "next_diaria": "2021-10-02",
         "trabajando": {
-            "status": "no",
-            "sueldo": 280,
-            "start": "2021-09-20T06:10:00.752495+02:00"
+            "status": "si",
+            "sueldo": 261,
+            "start": "2021-09-30T19:30:31.045317+02:00"
         }
     },
     "Igor Cerain": {
         "lexos": 0,
-        "diaria_racha": 3,
-        "next_diaria": "2021-09-22"
+        "diaria_racha": 13,
+        "next_diaria": "2021-10-03"
     },
     "Montse Apr": {
-        "lexos": 1,
+        "lexos": 151,
         "diaria_racha": 0,
         "next_diaria": "2021-09-11"
     },
     "Lucho D": {
         "lexos": 0,
-        "diaria_racha": 7,
-        "next_diaria": "2021-09-22",
+        "diaria_racha": 18,
+        "next_diaria": "2021-10-03",
         "trabajando": {
-            "status": "si",
-            "sueldo": 218,
-            "start": "2021-09-21T19:54:23.015947+02:00"
+            "status": "no",
+            "sueldo": 297,
+            "start": "2021-10-02T18:02:01.978615+02:00"
         }
     }
 }
