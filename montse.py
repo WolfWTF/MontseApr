@@ -725,21 +725,16 @@ async def _sorteo(ctx):
   else:
     inventario = actjson.abrir_json('MontseApr/inventario.json')
     n_reg = len(inventario)
-    print(n_reg)
     papeletas = []
     participantes = ""
     for key, value in inventario.items() :
-        print (key, value)
         esta = "boleto para la lista" in value
         if esta:
           boletos = value["boleto para la lista"]
           inventario[key].pop("boleto para la lista")
-          print(inventario)
-
           for i in range(boletos):
             papeletas.append(key)
     actjson.actualizar_inventarios(inventario)
-    print(papeletas)
     await ctx.reply("Rulando el bombo...")
     await asyncio.sleep(3)
     await ctx.send("Y el ganador es...")
