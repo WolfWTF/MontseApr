@@ -726,17 +726,17 @@ async def _sorteo(ctx):
       print (key, value)
       esta = "boleto para la lista" in value
       if esta:
-
         boletos = value["boleto para la lista"]
+        inventario[key].pop(["boleto para la lista"])
         for i in range(boletos):
           papeletas.append(key)
   print(papeletas)
   await ctx.reply("Rulando el bombo...")
-  await asyncio.sleep(5)
-  await ctx.reply("Y el ganador es...")
-  await asyncio.sleep(5)
+  await asyncio.sleep(3)
+  await ctx.send("Y el ganador es...")
+  await asyncio.sleep(3)
   ganador = random.choice(papeletas)
-  await ctx.reply(":tickets::tada: **{}!!** :tada::tickets:".format(ganador))
+  await ctx.send(":tickets::tada: **{}!!** :tada::tickets:".format(ganador))
 
 
   
