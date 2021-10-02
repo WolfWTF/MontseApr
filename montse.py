@@ -734,7 +734,7 @@ async def _sorteo(ctx):
         if esta:
           boletos = value["boleto para la lista"]
           inventario[key].pop("boleto para la lista")
-          print("Objeto Popeado")
+          print(inventario)
 
           for i in range(boletos):
             papeletas.append(key)
