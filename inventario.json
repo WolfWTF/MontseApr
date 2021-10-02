@@ -1,21 +1,25 @@
 {
     "DaniCassani": {
         "banana": 2,
-        "coco": 2,
-        "sombrero de pensar": 1
+        "coco": 1,
+        "sombrero de pensar": 1,
+        "cerveza": 2,
+        "boleto para la lista": 2
     },
     "ivan sabata": {
         "cerveza": 2
     },
     "ytrio": {
-        "coco": 1,
+        "coco": 8,
         "sombrero de pensar": 1
     },
     "Alexander Alex": {
         "cerveza": 1
     },
     "Combo": {
-        "sombrero de pensar": 1,
-        "boleto para la lista": 1
+        "sombrero de pensar": 3,
+        "boleto para la lista": 3,
+        "corona falsa": 3,
+        "coco": 3
     }
 }

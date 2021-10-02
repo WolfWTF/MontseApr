@@ -731,6 +731,13 @@ async def _sorteo(ctx):
         for i in range(boletos):
           papeletas.append(key)
   print(papeletas)
+  await ctx.reply("Rulando el bombo...")
+  await asyncio.sleep(5)
+  await ctx.reply("Y el ganador es...")
+  await asyncio.sleep(5)
+  ganador = random.choice(papeletas)
+  await ctx.reply(":tickets::tada: **{}!!** :tada::tickets:".format(ganador))
+
 
   
 
