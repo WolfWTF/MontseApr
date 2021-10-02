@@ -711,6 +711,29 @@ def check_canal(ctx):
   permiso = canal_id in canales_habilitados
   return permiso
 
+################
+@slash.slash(
+  name = "sorteo",
+  description = "Se sortea la lista de temas entre los poseedores de boletos.",
+  guild_ids=guild_ids)
+async def _sorteo(ctx):
+  inventario = actjson.abrir_json('MontseApr/inventario.json')
+  n_reg = len(inventario)
+  print(n_reg)
+  papeletas = []
+
+  for key, value in inventario.items() :
+      print (key, value)
+      esta = "boleto para la lista" in value
+      if esta:
+
+        boletos = value["boleto para la lista"]
+        for i in range(boletos):
+          papeletas.append(key)
+  print(papeletas)
+
+  
+
 #Futuras MODIFICACIONES.
 #cambiar /diaria a /semanal y cantidad fija (con racha) y baja.
 #implementar /burn /ruleta 
