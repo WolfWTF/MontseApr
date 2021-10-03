@@ -306,7 +306,7 @@ def dados(ctx,apuesta):
     respuesta = "No tienes suficientes Lexos para apostar esa cantidad."
   return respuesta
     
-async def caraocruz(ctx,apuesta):
+async def caraocruz(ctx,apuesta,Bot):
   lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
