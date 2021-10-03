@@ -593,7 +593,7 @@ async def _dados(ctx, apuesta = 0):
 async def _caraocruz(ctx, apuesta):
   if esunnumero(apuesta):
     respuesta = await f_m.caraocruz(ctx,int(apuesta),Bot)
-    await ctx.reply()
+    await ctx.reply(respuesta)
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
  
