@@ -306,12 +306,10 @@ def dados(ctx,apuesta):
     respuesta = "No tienes suficientes Lexos para apostar esa cantidad."
   return respuesta
     
-async def caraocruz(ctx,apuesta,selec_usuario):
+async def caraocruz(ctx,apuesta):
   lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
-
-
   
   def check(selec_usuario):
     return selec_usuario.author == ctx.author and selec_usuario.channel == ctx.channel and \
