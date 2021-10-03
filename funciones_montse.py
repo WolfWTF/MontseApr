@@ -245,7 +245,7 @@ def banco(message):
 
 
 def rps(ctx, apuesta, selec_usuario,selec_maquina):
-  respuesta = "Seleccion del usuario: " + selec_usuario + "\nSeleeción de la máquina: " + selec_maquina
+  respuesta = "Usuario: {}\nMáquina: {}".format(selec_usuario, selec_maquina)
   lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']

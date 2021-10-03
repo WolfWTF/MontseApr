@@ -584,8 +584,6 @@ async def _dados(ctx, apuesta = 0):
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
 
-
-
 @slash.slash(
   name = "caraocruz",
   description = "Te permite apostar Lexos contra la máquina tirando una moneda al aire.",
