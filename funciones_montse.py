@@ -314,10 +314,11 @@ async def caraocruz(ctx,apuesta,Bot):
   def check(selec_usuario):
     return selec_usuario.author == ctx.author and selec_usuario.channel == ctx.channel and \
     selec_usuario.content.lower() in opciones
-  selec_usuario = (await Bot.wait_for("message", check=check)).content.lower()
+  
     
   if (dinero_usuario >= apuesta  and apuesta>0):
     respuesta = "Apuestas {} :coin:. Elige: 'cara' o 'cruz' para tirar la moneda.".format(apuesta)
+    selec_usuario = (await Bot.wait_for("message", check=check)).content.lower()
     await ctx.reply(respuesta)
     opciones = ["cara","cruz"]
     moneda = random.choice(["cara","cruz"])
