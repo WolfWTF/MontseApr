@@ -584,7 +584,7 @@ async def _dados(ctx, apuesta = 0):
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
 
-def suficiente(ctx,cantidad)
+def suficiente(ctx,cantidad):
   lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero = lexos[usuario]['lexos']
