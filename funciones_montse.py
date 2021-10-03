@@ -306,11 +306,22 @@ def dados(ctx,apuesta):
     respuesta = "No tienes suficientes Lexos para apostar esa cantidad."
   return respuesta
     
-def caraocruz(ctx,apuesta,selec_usuario):
+async def caraocruz(ctx,apuesta,selec_usuario):
   lexos = actjson.abrir_json("MontseApr/lexos.json")
   usuario = ctx.author.name
   dinero_usuario = lexos[usuario]['lexos']
+
+
+  
+  def check(selec_usuario):
+    return selec_usuario.author == ctx.author and selec_usuario.channel == ctx.channel and \
+    selec_usuario.content.lower() in opciones
+  selec_usuario = (await Bot.wait_for("message", check=check)).content.lower()
+    
   if (dinero_usuario >= apuesta  and apuesta>0):
+    respuesta = "Apuestas {} :coin:. Elige: 'cara' o 'cruz' para tirar la moneda.".format(apuesta)
+    await ctx.reply(respuesta)
+    opciones = ["cara","cruz"]
     moneda = random.choice(["cara","cruz"])
     if moneda == selec_usuario:
       respuesta = "Ha salido: " + moneda +".\nGANAS " + str(apuesta) + " Lexos :coin:!"

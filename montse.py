@@ -584,32 +584,16 @@ async def _dados(ctx, apuesta = 0):
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
 
-def suficiente(ctx,cantidad):
-  lexos = actjson.abrir_json("MontseApr/lexos.json")
-  usuario = ctx.author.name
-  dinero = lexos[usuario]['lexos']
-  sufi = (dinero >= cantidad)
-  return sufi
+
 
 @slash.slash(
   name = "caraocruz",
   description = "Te permite apostar Lexos contra la máquina tirando una moneda al aire.",
   guild_ids=guild_ids)
 async def _caraocruz(ctx, apuesta):
-  if not suficiente(ctx,apuesta):
-    await ctx.reply("No tienes tanta pasta, fantasma :ghost:.")
-    return
   if esunnumero(apuesta):
-    respuesta = "Apuestas {} :coin:. Elige: 'cara' o 'cruz' para tirar la moneda.".format(apuesta)
-    await ctx.reply(respuesta)
-    opciones = ["cara","cruz"]
-    
-    def check(selec_usuario):
-      return selec_usuario.author == ctx.author and selec_usuario.channel == ctx.channel and \
-      selec_usuario.content.lower() in opciones
-    selec_usuario = (await Bot.wait_for("message", check=check)).content.lower()
-    
-    await ctx.reply(f_m.caraocruz(ctx,int(apuesta),selec_usuario))
+    respuesta = await f_m.caraocruz(ctx,int(apuesta),selec_usuario)
+    await ctx.reply()
   else:
     await ctx.reply("La apuesta debe ser un número.",delete_after = 5)
  
