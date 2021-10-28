@@ -430,6 +430,9 @@ async def _impuestos(ctx):
     for usuario in lexos:
       dinero = lexos[usuario]['lexos']
       if int(dinero) >= 10000 and usuario != "Alexander Alex":
+        if usuario == "DaniCassani":
+          respuesta = "**Acceso denegado**.\nNo puedes gravar al Prime Minister, bitch :sunglasses:."
+          await ctx.reply(respuesta)
         impuesto = round(dinero*0.85)
         dinero = dinero - impuesto
         arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
