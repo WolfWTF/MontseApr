@@ -327,7 +327,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 async def on_ready():
   print('Sesión iniciada como {0.user}'.format(Bot))
   channel = Bot.get_channel(879396354525397053) #Parche
-  await channel.send("¡Me he quedao' traspuesta un ratito, pero ya estoy de vuelta!")
+  #await channel.send("¡Me he quedao' traspuesta un ratito, pero ya estoy de vuelta!")
 
 #BIENVENIDA
 @Bot.event
@@ -424,7 +424,6 @@ async def _impuestos(ctx):
   if len(rp_usuario) == 0:
     respuesta = "No tienes el rol necesario para ejecutar esta acción."
     await ctx.reply(respuesta) 
-    return
   else:
     lexos = actjson.abrir_json("MontseApr/lexos.json")
     respuesta = ""
@@ -434,6 +433,7 @@ async def _impuestos(ctx):
         if usuario == "DaniCassani":
           respuesta = "**Acceso denegado**.\nNo puedes gravar al Prime Minister, bitch :sunglasses:."
           await ctx.reply(respuesta)
+          return
         impuesto = round(dinero*0.85)
         dinero = dinero - impuesto
         arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
