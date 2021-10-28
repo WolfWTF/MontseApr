@@ -433,13 +433,13 @@ async def _impuestos(ctx):
         if usuario == "DaniCassani":
           respuesta = "**Acceso denegado**.\nNo puedes gravar al Prime Minister, bitch :sunglasses:."
           await ctx.reply(respuesta)
-          return
-        impuesto = round(dinero*0.85)
-        dinero = dinero - impuesto
-        arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
-        lexos[usuario]['lexos'] = dinero
-        lexos["Alexander Alex"]["lexos"] = arcas_reales
-        respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
+        else:
+          impuesto = round(dinero*0.85)
+          dinero = dinero - impuesto
+          arcas_reales = lexos["Alexander Alex"]["lexos"] + impuesto
+          lexos[usuario]['lexos'] = dinero
+          lexos["Alexander Alex"]["lexos"] = arcas_reales
+          respuesta += ":chart_with_downwards_trend: **{}** ha recibido un gravamen del **85%** ({} lexos).\n".format(usuario,impuesto)
     if len(respuesta)>0:
       respuesta_embed = discord.Embed(title="__**IMPUESTOS DEL REINO A LAS GRANDES FORTUNAS:**__" , color= 0xff0000, description = respuesta)
       #respuesta_embed.add_field(name="",)
