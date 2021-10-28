@@ -424,6 +424,7 @@ async def _impuestos(ctx):
   if len(rp_usuario) == 0:
     respuesta = "No tienes el rol necesario para ejecutar esta acción."
     await ctx.reply(respuesta) 
+    return
   else:
     lexos = actjson.abrir_json("MontseApr/lexos.json")
     respuesta = ""
